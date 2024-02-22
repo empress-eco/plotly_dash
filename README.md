@@ -1,76 +1,73 @@
-## [Plotly Dash](https://github.com/plotly/dash) integration for [Frappe web framework](https://github.com/frappe/frappe).
+<div align="center">
+  <img src="https://grow.empress.eco/uploads/default/original/2X/1/1f1e1044d3864269d2a613577edb9763890422ab.png" alt="Empress Plotly Dash Integration Logo">
+  <h1 align="center">Empress Plotly Dash Integration: Supercharge Your Framework with Powerful Dashboards</h1>
+  <p align="center">
+    Enhance your Empress web framework with interactive and engaging Dashboards!
+    <br />
+    <a href="https://github.com/empress-eco/plotly_dash">Explore the Docs</a>
+    ·
+    <a href="https://github.com/empress-eco/plotly_dash/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/empress-eco/plotly_dash/issues">Request Feature</a>
+  </p>
+</div>
 
-Plotly Dash is great dashboard tools which allow programmer to easily create interactive dashboard with endless possibilities but it lack of general functionality such as web-authentication and user permission.
+## About The Project
 
-Frappe web framework is also a great web framework with come with alot of functionality.
+### 📖 Overview
+Empress Plotly Dash Integration is a powerful tool for developers seeking to incorporate interactive dashboards in their Empress web framework. It merges the exceptional data visualization power of Plotly Dash with the comprehensive functionality of Empress, creating a robust environment for dashboard creation and management.
 
-Integrate Plotly Dash with Frappe web framework will result in great dashboard tools with web-authentication, user permission, ability to easily performs CRUD operation and also the most important thing ERPNext.
+### 🌟 Key Features
+- Access Empress data from the Dash environment.
+- Create dashboard templates using the CoreUI admin template.
+- Leverage the built-in web-authentication of Empress web framework.
+- Manage user permission using user roles from Empress.
 
-### Feature
+### 🛠 Built With
+This project is built with:
+- [Plotly Dash](https://plotly.com/dash/)
+- [Empress](https://Empress.io/)
 
- - Access Frappe data from dash environment.
+## Getting Started
 
- - Dashboard template using CoreUI admin template.
- ![Templating](readme_assets/templating-min.gif)
+### Prerequisites
+Ensure that you have the Empress web framework set up and running before proceeding. 
 
- - Authentication from Frappe web framework.
- ![Authentication](readme_assets/authentication-min.gif)
+### Installation
+Follow the steps below to get the Empress Plotly Dash Integration up and running in your development environment:
 
- - Dashboard permission using user roles from Frappe.
- ![User Permission](readme_assets/user_permission-min.gif)
+1. Clone the repository using the following command:
+```sh
+git clone https://github.com/empress-eco/plotly_dash.git
+```
+2. Navigate into the cloned repository and install the necessary applications:
+```sh
+bench get-app dash_integration https://github.com/pipech/Empress-plotly-dash.git
+bench get-app dash_dashboard https://github.com/pipech/Empress-plotly-dash-dashboard.git
+```
+3. Add your dashboard layout to the `dash_dashboard/dash_dashboard` folder.
+4. Set routes and callbacks in the `dash_dashboard/router.py` file.
 
-### Description
+## Usage
+To use the Empress Plotly Dash Integration within the Empress environment, search for the `Dash Dashboard` DocType in the Empress web UI. Add a new document with a name that matches your `dashboard_route`.
 
-#### How it works
+## Contributing
+We warmly welcome community contributions! Here's how you can contribute:
 
-It works by passing request from Frappe application to Dash application only if request url path start with `/dash`.
+- Fork the Project
+- Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+- Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+- Push to the Branch (`git push origin feature/AmazingFeature`)
+- Open a Pull Request
 
-Then we embedded Dash page with CoreUI template into Frappe page using iFrame.
-
-### How to use
-
-Dash Integration app is design to use along with [Dash Dashboard](https://github.com/pipech/frappe-plotly-dash-dashboard) app.
-
-#### Installation
-
-    bench get-app dash_integration https://github.com/pipech/frappe-plotly-dash.git
-    bench get-app dash_dashboard https://github.com/pipech/frappe-plotly-dash-dashboard.git
-
-#### Adding dashboard
-
- 1. Adding dashboard layout to `dash_dashboard/dash_dashboard` folder
- 1. Set route in `dash_dashboard/router.py` file by adding route into `dashboard_route.route_wrapper` function
- 1. Set callback in `dash_dashboard/router.py` file by adding callback into `dashboard_callback.callback_wrapper` function
- 1. In Frappe web ui search for `Dash Dashboard` DocType, then add a new doc with matching name to `dashboard_route`
-
-### Setup
-
-#### For production setup
-
-Change supervisor config
- - For [Normal setup](https://frappe.io/docs/user/en/bench/guides/setup-production.html) it's located on `/etc/supervisor/conf.d/frappe-bench.conf`
- - For [ERPNext Docker Debian setup](https://github.com/pipech/erpnext-docker-debian) it's locate on [`production_setup/conf/frappe-docker-conf/supervisor.conf`](https://github.com/pipech/erpnext-docker-debian/blob/master/production_setup/conf/frappe-docker-conf/supervisor.conf)
-
-From
-
-    command=/home/frappe/bench/env/bin/gunicorn -b 0.0.0.0:8000 -w 4 -t 120 frappe.app:application --preload
-
-To
-
-    command=/home/frappe/bench/env/bin/gunicorn -b 0.0.0.0:8000 -w 4 -t 120 dash_integration.app:application --preload
-
-#### For development setup
-
-    bench execute dash_integration.app.serve
-
-### Limitation
-
- - We use [ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) for iFrame resizing, it compatible for most of the browser but not all. Check compatibility at [CanIUse](https://caniuse.com/#feat=resizeobserver).
-
-### Attribution 
-
- - [CoreUi Bootstrap Admin Template](https://github.com/coreui/coreui-free-bootstrap-admin-template/) - MIT License
+## License and Acknowledgments
 
 ### License
 
-This repository has been released under the MIT License.
+This project is licensed under the MIT License. Your contributions are also licensed under the MIT License.
+
+### Acknowledgements
+
+Special thanks to the Empress Community, the architects behind the essential tools that power this project. Their innovation and dedication have been instrumental in building the foundations and functionalities we rely on. We are profoundly grateful for their pioneering work and ongoing support.
+
+**Note:** Please check browser compatibility for iFrame resizing with [ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) on [CanIUse](https://caniuse.com/#feat=resizeobserver).
